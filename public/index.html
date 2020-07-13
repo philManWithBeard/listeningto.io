@@ -30,7 +30,6 @@
 
 <body>
 
-
   <header>
     <img src="img/listeningto.png" alt="">
     <h1>listeningto.io</h1>
@@ -118,7 +117,7 @@
         }
 
         function renderMostListened(html) {
-          const API_ID = "7dd8b6b9-cd53-474e-85ff-2cecfe88b7f0"
+          const API_ID = ""
           var settings = {
             "url": "https://hcti.io/v1/image",
             "method": "POST",
@@ -197,7 +196,7 @@
           $.ajax(settings).done(function(response) {
             console.log(response);
             $(".songs").html(`<img id="artworkImg" src="${response.url}" width="500"/>`);
-            $(".download").html(`<a href="${response.url}">Download and share</a>`);
+            $(".download").html(`<a download="listeningto" href="${response.url}">Download and share</a>`);
           });
         }
 
