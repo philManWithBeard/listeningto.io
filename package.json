@@ -12,6 +12,7 @@
   "scripts": {},
   "config": {},
   "dependencies": {
+    "request": "*",
     "express": "*"
   },
   "devDependencies": {},
