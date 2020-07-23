@@ -13,7 +13,8 @@
   "config": {},
   "dependencies": {
     "request": "*",
-    "express": "*"
+    "express": "*",
+    "cors": "*"
   },
   "devDependencies": {},
   "bundleDependencies": [],
