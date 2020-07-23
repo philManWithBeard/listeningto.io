@@ -1,6 +1,5 @@
 'use strict';
 
-  function() {
 
     /**
      * Obtains parameters from the hash of the URL
@@ -143,4 +142,3 @@
       }
 
     }
-  }
