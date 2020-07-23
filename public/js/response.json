@@ -1,0 +1,181 @@
+{
+  "items" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/2wPDbhaGXCqROrVmwDdCrK"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 124384
+    },
+    "genres" : [ "ambient", "art pop", "chamber psych", "chillwave", "compositional ambient", "drone", "electronica", "escape room", "experimental pop", "fluxwork", "fourth world", "freak folk", "hauntology", "indietronica", "intelligent dance music", "microhouse", "outsider house", "vaporwave", "wonky" ],
+    "href" : "https://api.spotify.com/v1/artists/2wPDbhaGXCqROrVmwDdCrK",
+    "id" : "2wPDbhaGXCqROrVmwDdCrK",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/bf32603ef9a5cd2cf3151b69adc342ca74f6aec9",
+      "width" : 640
+    }, {
+      "height" : 320,
+      "url" : "https://i.scdn.co/image/df77716366eb8b0f1afaa71416334b90d1530958",
+      "width" : 320
+    }, {
+      "height" : 160,
+      "url" : "https://i.scdn.co/image/e9bb3ab4ba24c07545378100edcc2fe0befb477e",
+      "width" : 160
+    } ],
+    "name" : "Oneohtrix Point Never",
+    "popularity" : 52,
+    "type" : "artist",
+    "uri" : "spotify:artist:2wPDbhaGXCqROrVmwDdCrK"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/65dGLGjkw3UbddUg2GKQoZ"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 427957
+    },
+    "genres" : [ "alternative hip hop", "canadian modern jazz", "escape room", "indie soul" ],
+    "href" : "https://api.spotify.com/v1/artists/65dGLGjkw3UbddUg2GKQoZ",
+    "id" : "65dGLGjkw3UbddUg2GKQoZ",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/952c3377ff254cbaf2a39315f14fcb24ef2c3e57",
+      "width" : 640
+    }, {
+      "height" : 320,
+      "url" : "https://i.scdn.co/image/668a61db81258c56c66ffa80b85e59d0de152c6f",
+      "width" : 320
+    }, {
+      "height" : 160,
+      "url" : "https://i.scdn.co/image/618168c01ef7f4231fa61498a91502f30d50cc7e",
+      "width" : 160
+    } ],
+    "name" : "BADBADNOTGOOD",
+    "popularity" : 63,
+    "type" : "artist",
+    "uri" : "spotify:artist:65dGLGjkw3UbddUg2GKQoZ"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/2H5x6tCSjQ4N5Lh7pRrTNo"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 24990
+    },
+    "genres" : [ "chaotic hardcore", "melodic hardcore", "rock alternatif francais", "screamo", "skramz" ],
+    "href" : "https://api.spotify.com/v1/artists/2H5x6tCSjQ4N5Lh7pRrTNo",
+    "id" : "2H5x6tCSjQ4N5Lh7pRrTNo",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/af7da33cefca320f2e5dc8bed4df46b1f8b1a0a1",
+      "width" : 640
+    }, {
+      "height" : 320,
+      "url" : "https://i.scdn.co/image/da30bc30bef4c99644c5d73cd2e6575721da6b08",
+      "width" : 320
+    }, {
+      "height" : 160,
+      "url" : "https://i.scdn.co/image/8f6526fd09b163310c140e9f18620109905f7c98",
+      "width" : 160
+    } ],
+    "name" : "Birds in Row",
+    "popularity" : 34,
+    "type" : "artist",
+    "uri" : "spotify:artist:2H5x6tCSjQ4N5Lh7pRrTNo"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/1AMMMSq3rJdZtFGnBXEkz7"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 69879
+    },
+    "genres" : [ "dub", "reggae", "rock steady", "roots reggae", "ska" ],
+    "href" : "https://api.spotify.com/v1/artists/1AMMMSq3rJdZtFGnBXEkz7",
+    "id" : "1AMMMSq3rJdZtFGnBXEkz7",
+    "images" : [ {
+      "height" : 671,
+      "url" : "https://i.scdn.co/image/ee08962ddb9c7f27a3ad5ed6052aa8deef521331",
+      "width" : 1000
+    }, {
+      "height" : 429,
+      "url" : "https://i.scdn.co/image/e0bb3ce3cdd1679596f4b35acd49e4c5aa26b825",
+      "width" : 639
+    }, {
+      "height" : 134,
+      "url" : "https://i.scdn.co/image/28327cef5c50971bd3643ebcad8b162504256722",
+      "width" : 200
+    }, {
+      "height" : 43,
+      "url" : "https://i.scdn.co/image/83658583a9b434791304b3137cfdc8c911af70d1",
+      "width" : 64
+    } ],
+    "name" : "King Tubby",
+    "popularity" : 51,
+    "type" : "artist",
+    "uri" : "spotify:artist:1AMMMSq3rJdZtFGnBXEkz7"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/4MXUO7sVCaFgFjoTI5ox5c"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 1109298
+    },
+    "genres" : [ "baroque pop", "chamber pop", "freak folk", "indie folk", "singer-songwriter" ],
+    "href" : "https://api.spotify.com/v1/artists/4MXUO7sVCaFgFjoTI5ox5c",
+    "id" : "4MXUO7sVCaFgFjoTI5ox5c",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/9980e58868196afe7b58aaef79f61441a8d2907e",
+      "width" : 640
+    }, {
+      "height" : 320,
+      "url" : "https://i.scdn.co/image/5a5c598b88e736485a738d6266a017eed1703c89",
+      "width" : 320
+    }, {
+      "height" : 160,
+      "url" : "https://i.scdn.co/image/db6979ecd0d3f2e27d6fb6ff254bcaf0ba134b82",
+      "width" : 160
+    } ],
+    "name" : "Sufjan Stevens",
+    "popularity" : 74,
+    "type" : "artist",
+    "uri" : "spotify:artist:4MXUO7sVCaFgFjoTI5ox5c"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/3hyGGjxu73JuzBa757H6R5"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 228768
+    },
+    "genres" : [ "alternative rock", "anti-folk", "freak folk", "indie folk", "indie pop", "indie rock", "lo-fi", "melancholia", "new weird america", "stomp and holler" ],
+    "href" : "https://api.spotify.com/v1/artists/3hyGGjxu73JuzBa757H6R5",
+    "id" : "3hyGGjxu73JuzBa757H6R5",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/7cdea901a4f4f3875c93aa4d40a6305dda15a3f2",
+      "width" : 640
+    }, {
+      "height" : 320,
+      "url" : "https://i.scdn.co/image/e570e71601a9825f89b0307fd65feeddeb88968f",
+      "width" : 320
+    }, {
+      "height" : 160,
+      "url" : "https://i.scdn.co/image/47ddc20e429c5f75df742f507374993260e7d9c2",
+      "width" : 160
+    } ],
+    "name" : "The Mountain Goats",
+    "popularity" : 59,
+    "type" : "artist",
+    "uri" : "spotify:artist:3hyGGjxu73JuzBa757H6R5"
+  } ],
+  "total" : 50,
+  "limit" : 6,
+  "offset" : 0,
+  "previous" : null,
+  "href" : "https://api.spotify.com/v1/me/top/artists?limit=6&offset=0&time_range=short_term",
+  "next" : "https://api.spotify.com/v1/me/top/artists?limit=6&offset=6&time_range=short_term"
+}

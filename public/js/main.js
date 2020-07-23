@@ -1,79 +1,146 @@
 'use strict';
 
-var myHeaders = new Headers();
-myHeaders.append("Authorization", "Bearer BQCKIot0oX7uM6om60VaqZ_y6ZB0OjceefCVoMDwk-rrMW35rSF-HVlDKtY5qGXdbSguYEz6Gp7awmw4lwPnLvAI_RbELGPJdZq_MduEaW-hOPSE6Tanw28F16wdPGXWWXzBJegLBLK_0XU2_aJjNP4nh_49G5UCirY");
-myHeaders.append("Cookie", "_ga=GA1.2.2069325888.1588705949; _gid=GA1.2.226590076.1588705949; sp_dc=AQC33Fnch_VAQIbv6AgSmbQ_Vn88IdPL5aoDFLIuMEes5gZmUPKbarklt00QrTsFR_XUa_rwnISxbK05M9arkCVo1DNeyfZtWF23gIfMKG0; sp_key=80052a29-945f-4333-ba13-2e55e2f0af52");
+  function() {
 
-var requestOptions = {
-  method: 'GET',
-  headers: myHeaders,
-  redirect: 'follow'
-};
+    /**
+     * Obtains parameters from the hash of the URL
+     * @return Object
+     */
+    function getHashParams() {
+      var hashParams = {};
+      var e, r = /([^&;=]+)=?([^&;]*)/g,
+        q = window.location.hash.substring(1);
+      while (e = r.exec(q)) {
+        hashParams[e[1]] = decodeURIComponent(e[2]);
+      }
+      return hashParams;
+    }
+
+    var params = getHashParams();
+
+    var access_token = params.access_token,
+      refresh_token = params.refresh_token,
+      error = params.error;
+
+    if (error) {
+      alert('There was an error during the authentication');
+    } else {
+      if (access_token) {
 
 
+        $.ajax({
+          url: 'https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=6',
+          headers: {
+            'Authorization': 'Bearer ' + access_token
+          },
+          success: function(response) {
+            displayMostListened(response)
+            $('#login').hide();
+            $('#loggedin').show();
+          }
+        });
+      } else {
+        // render initial screen
+        $('#login').show();
+        $('#loggedin').hide();
+      }
 
-function fetchMostListened() {
-  fetch("https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=6", requestOptions)
-    .then(response => response.json())
-    .then(result => displayMostListened(result))
-    .catch(error => console.log('error', error));
-}
+      function displayMostListened(result) {
+        console.log(result);
+        let albumArtwork = result.items.reduce((result, item, index) => {
+          result += `<div class="albumArtwork"> <img src="${item.images[1].url}"alt="">
+            <h4>${item.name}</h4>
+            </div>`;
+          return result;
+        }, '');;
+        let songsHtml = `<div class="songs">` + albumArtwork + `</div>`
+        renderMostListened(songsHtml)
+        $(".songs").html(albumArtwork);
+      }
 
-function displayMostListened(result) {
-  console.log(result);
-  let answerThing = result.items.reduce((result, item, index) => {
-    result += `<div class="albumArtwork"> <img src="${item.images[1].url}"alt="">
-    <h4>${item.name}</h4>
-    </div>`;
-    return result;
-  }, '');;
-  $(".songs").html(answerThing);
-    $('.playlists').attr('hidden', '');
-}
+      function renderMostListened(html) {
+        const API_ID = "7dd8b6b9-cd53-474e-85ff-2cecfe88b7f0"
+        var settings = {
+          "url": "https://hcti.io/v1/image",
+          "method": "POST",
+          "timeout": 0,
+          "headers": {
+            "Authorization": "Basic N2RkOGI2YjktY2Q1My00NzRlLTg1ZmYtMmNlY2ZlODhiN2YwOmQwY2FjN2Y0LTIyZmEtNDM3ZC1iMzc1LTI3ZmQ3ZDZiZDAxYw==",
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "data": {
+            "html": html,
+            "css": `
 
-function fetchSpotifyPlaylists() {
-  fetch("https://api.spotify.com/v1/me/playlists", requestOptions)
-    .then(response => response.json())
-    .then(result => displaySpotifyPlaylists(result))
-    .catch(error => console.log('error', error));
-}
+            .songs {
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              justify-content: center;
+              width: 500px;
+            }
 
-function displaySpotifyPlaylists(result) {
-  let answerThing = result.items.reduce((result, item, index) => {
-    result += `<input type="radio" id="${index}" name="answer" value="${item.id}">
-    <label for="${index}">${item.name}</label>`;
-    return result;
-  }, '');;
-  $(".playlists").html(answerThing);
-  handleButton();
-}
+            .albumArtwork {
+              width: 150px;
+              height: 200px;
+              border-style: solid;
+              border-width: thin;
+              margin: 10px;
+              padding: 10px;
+              font-family: 'Permanent Marker', cursive;
+            }
 
-function handleButton() {
-  $('.playlists').on('click', 'input', function(event) {
-    let answer = $(this).val();
-    $('.playlists').attr('hidden', '');
-    $('.playlistSongs').removeAttr('hidden');
-    fetchPlaylistSongs(answer);
+            .albumArtwork img {
+              float: left;
+              background-size: cover;
+              width: 150px;
+              height: 150px;
+            }
 
-  });
-}
+            .albumArtwork h4 {
+              height: 70px;
+              margin: auto;
+              text-align: center;
+            }
 
-function fetchPlaylistSongs(playlistID) {
-  fetch(`https://api.spotify.com/v1/playlists/${playlistID}/tracks?market=ES&fields=items&limit=10&offset=5`, requestOptions)
-    .then(response => response.json())
-    .then(result => displayPlaylistSongs(result))
-    .catch(error => console.log('error', error));
-}
+            .playlists label {
+              display: block;
+              border-style: solid;
+              border-width: thin;
+              margin: 10px 0px;
+              padding: 10px;
+            }
 
-function displayPlaylistSongs(result) {
-  console.log(result);
-  let answerThing = result.items.reduce((result, item, index) => {
-    result += `<div class="albumArtwork"> <img src="${item.track.album.images[1].url}"alt="">
-    <h4>${item.track.artists[0].name}</h4>
-    </div>`;
-    return result;
-  }, '');;
-  $(".songs").html(answerThing);
-}
+            .playlists input[type="radio"] {
+              opacity: 0;
+              position: fixed;
+              width: 0;
+            }
 
-$(fetchMostListened());
+            .playlists input[type="radio"]:checked+label {
+              background-color: #bfb;
+            }
+
+            .playlists input[type="radio"]:focus+label {
+              background-color: #dfd;
+            }
+
+            .playlists label:hover, #quizForm label:checked {
+              background-color: #dfd;
+            }
+
+            .playlists label:active {
+              background-color: #dfd;
+            }`,
+            "google_fonts": "Permanent Marker"
+          }
+        }
+        $.ajax(settings).done(function(response) {
+          console.log(response);
+          $(".songs").html(`<img id="artworkImg" src="${response.url}" width="500"/>`);
+          $(".download").html(`<a download="listeningto" href="${response.url}">Download and share</a>`);
+        });
+      }
+
+    }
+  }
