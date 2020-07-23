@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 8888;
 
 var client_id = 'c0a935badcee4045beff551c0a12dae5'; // Your client id
 var client_secret = '39b9276be21a4b31977288810e17f5dd'; // Your secret
-var redirect_uri = 'http://localhost:8888/callback/'; // Your redirect uri
+var redirect_uri = 'https://still-tundra-95798.herokuapp.com/callback/'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
