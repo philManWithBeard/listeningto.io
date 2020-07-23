@@ -11,11 +11,7 @@
   "repository": {},
   "scripts": {},
   "config": {},
-  "dependencies": {
-    "request": "*",
-    "express": "*",
-    "cors": "*"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "bundleDependencies": [],
   "bundledDependencies": [],
