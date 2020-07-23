@@ -13,9 +13,7 @@
   "config": {},
   "dependencies": {
     "request": "*",
-    "express": "*",
-    "cors": "*",
-    "cookie-parser": "*"
+    "express": "*"
   },
   "devDependencies": {},
   "bundleDependencies": [],
