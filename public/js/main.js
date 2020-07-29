@@ -88,7 +88,7 @@ function renderMostListened(html) {
       "Authorization": "Basic N2RkOGI2YjktY2Q1My00NzRlLTg1ZmYtMmNlY2ZlODhiN2YwOmQwY2FjN2Y0LTIyZmEtNDM3ZC1iMzc1LTI3ZmQ3ZDZiZDAxYw==",
       "Content-Type": "application/x-www-form-urlencoded"
     },
-    data: {
+    body: {
       "html": html,
       "css": `
 
