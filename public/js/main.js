@@ -45,7 +45,14 @@ function getSpotifyTopSix() {
   const header = {
     'Authorization': 'Bearer ' + accessToken
   }
-  fetch(url, header)
+  const requestOptions = {
+    method: 'GET',
+    headers: header,
+    redirect: 'follow'
+  };
+
+
+  fetch(url, requestOptions)
     .then(response => {
       if (response.ok) {
         return response.json();
