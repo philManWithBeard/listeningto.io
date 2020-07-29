@@ -4,7 +4,6 @@
 // render initial screen
 $('#login').show()
 $('#loggedin').hide()
-}
 
 /**
  * Obtains parameters from the hash of the URL
