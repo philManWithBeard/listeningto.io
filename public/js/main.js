@@ -1,8 +1,6 @@
 'use strict'
 
 
-
-console.log("hello world")
 /**
  * Obtains parameters from the hash of the URL
  * @return Object
@@ -25,6 +23,7 @@ const error = params.error
 const searchURL = 'https://api.spotify.com/v1/me/top/artists';
 
 if (accessToken) {
+  console.log("access token")
     getSpotifyTopSix()
 } else {
   // render initial screen
