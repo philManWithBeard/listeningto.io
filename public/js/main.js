@@ -1,5 +1,15 @@
 'use strict'
 
+
+// render initial screen
+$('#login').show()
+$('#loggedin').hide()
+}
+
+/**
+ * Obtains parameters from the hash of the URL
+ * @return Object
+ */
 function getHashParams() {
   const hashParams = {}
   let e
@@ -49,32 +59,32 @@ function getSpotifyTopSix() {
     });
 }
 
-function displayMostListened(result) {
-  console.log(result)
-  let albumArtwork = result.items.reduce((result, item, index) => {
-    result += `<div class="albumArtwork"> <img src="${item.images[1].url}"alt="">
+  function displayMostListened(result) {
+    console.log(result)
+    let albumArtwork = result.items.reduce((result, item, index) => {
+      result += `<div class="albumArtwork"> <img src="${item.images[1].url}"alt="">
             <h4>${item.name}</h4>
             </div>`
-    return result
-  }, '');
-  let songsHtml = `<div class="songs">` + albumArtwork + `</div>`
-  renderMostListened(songsHtml)
-  $(".songs").html(albumArtwork)
-}
+      return result
+    }, '');
+    let songsHtml = `<div class="songs">` + albumArtwork + `</div>`
+    renderMostListened(songsHtml)
+    $(".songs").html(albumArtwork)
+  }
 
-function renderMostListened(html) {
-  const API_ID = "7dd8b6b9-cd53-474e-85ff-2cecfe88b7f0"
-  let settings = {
-    "url": "https://hcti.io/v1/image",
-    "method": "POST",
-    "timeout": 0,
-    "headers": {
-      "Authorization": "Basic N2RkOGI2YjktY2Q1My00NzRlLTg1ZmYtMmNlY2ZlODhiN2YwOmQwY2FjN2Y0LTIyZmEtNDM3ZC1iMzc1LTI3ZmQ3ZDZiZDAxYw==",
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    "data": {
-      "html": html,
-      "css": `
+  function renderMostListened(html) {
+    const API_ID = "7dd8b6b9-cd53-474e-85ff-2cecfe88b7f0"
+    let settings = {
+      "url": "https://hcti.io/v1/image",
+      "method": "POST",
+      "timeout": 0,
+      "headers": {
+        "Authorization": "Basic N2RkOGI2YjktY2Q1My00NzRlLTg1ZmYtMmNlY2ZlODhiN2YwOmQwY2FjN2Y0LTIyZmEtNDM3ZC1iMzc1LTI3ZmQ3ZDZiZDAxYw==",
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "data": {
+        "html": html,
+        "css": `
 
             .songs {
               display: flex;
@@ -136,12 +146,12 @@ function renderMostListened(html) {
             .playlists label:active {
               background-color: #dfd;
             }`,
-      "google_fonts": "Permanent Marker"
+        "google_fonts": "Permanent Marker"
+      }
     }
+    $.ajax(settings).done(function(response) {
+      console.log(response)
+      $(".songs").html(`<img id="artworkImg" src="${response.url}" width="500"/>`)
+      $(".download").html(`<a download="listeningto" href="${response.url}">Download and share</a>`)
+    })
   }
-  $.ajax(settings).done(function(response) {
-    console.log(response)
-    $(".songs").html(`<img id="artworkImg" src="${response.url}" width="500"/>`)
-    $(".download").html(`<a download="listeningto" href="${response.url}">Download and share</a>`)
-  })
-}
