@@ -22,7 +22,7 @@ const accessToken = params.access_token
 const error = params.error
 const searchURL = 'https://api.spotify.com/v1/me/top/artists';
 
-console.log(accessToken)
+console.log(params)
 if (accessToken) {
   console.log("access token")
     getSpotifyTopSix()
