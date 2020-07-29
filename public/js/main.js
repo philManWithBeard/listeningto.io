@@ -155,3 +155,5 @@ function getSpotifyTopSix() {
       $(".download").html(`<a download="listeningto" href="${response.url}">Download and share</a>`)
     })
   }
+
+  getSpotifyTopSix()
