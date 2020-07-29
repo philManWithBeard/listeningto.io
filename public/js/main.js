@@ -2,7 +2,7 @@
 
 
 
-
+console.log("hello world")
 /**
  * Obtains parameters from the hash of the URL
  * @return Object
