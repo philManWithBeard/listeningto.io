@@ -43,7 +43,7 @@ function getSpotifyTopSix() {
   const header = {
     'Authorization': 'Bearer ' + access_token
   }
-
+      console.log(url)
   fetch(url, header)
     .then(response => {
       if (response.ok) {
