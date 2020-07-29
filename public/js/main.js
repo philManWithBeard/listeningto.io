@@ -166,13 +166,13 @@ function renderMostListened(html) {
       }
       throw new Error(response.statusText);
     })
-    .then(imgResponse => console.log(imgResponse))
+    .then(imgResponse => displayImage(imgResponse))
     .catch(err => {
       $('#js-error-message').text(`Something went wrong: ${err.message}`);
     });
 }
 
 function displayImage(imgResponse) {
-  $(".songs").html(`<img id="artworkImg" src="${response.url}" width="500"/>`)
-  $(".download").html(`<a download="listeningto" href="${response.url}">Download and share</a>`)
+  $(".songs").html(`<img id="artworkImg" src="${imgResponse.url}" width="500"/>`)
+  $(".download").html(`<a download="listeningto" href="${imgResponse.url}">Download and share</a>`)
 }
