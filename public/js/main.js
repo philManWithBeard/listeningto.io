@@ -1,9 +1,7 @@
 'use strict'
 
 
-// render initial screen
-$('#login').show()
-$('#loggedin').hide()
+
 
 /**
  * Obtains parameters from the hash of the URL
@@ -26,6 +24,13 @@ const accessToken = params.access_token
 const error = params.error
 const searchURL = 'https://api.spotify.com/v1/me/top/artists';
 
+if (accessToken) {
+    getSpotifyTopSix()
+} else {
+  // render initial screen
+  $('#login').show()
+  $('#loggedin').hide()
+}
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
@@ -155,5 +160,3 @@ function getSpotifyTopSix() {
       $(".download").html(`<a download="listeningto" href="${response.url}">Download and share</a>`)
     })
   }
-
-  getSpotifyTopSix()
