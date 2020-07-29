@@ -10,15 +10,14 @@ function getHashParams() {
   let e
   const r = /([^&;=]+)=?([^&;]*)/g
   const q = window.location.hash.substring(1)
-  console.log(q)
   while (e === r.exec(q)) {
     hashParams[e[1]] = decodeURIComponent(e[2])
   }
   return hashParams
 }
-
+console.log(getHashParams())
 const params = getHashParams()
-console.log(params)
+
 const accessToken = params.access_token
 const error = params.error
 const searchURL = 'https://api.spotify.com/v1/me/top/artists';
