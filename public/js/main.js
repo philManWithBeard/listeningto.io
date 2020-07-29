@@ -58,7 +58,7 @@ function getSpotifyTopSix() {
       }
       throw new Error(response.statusText);
     })
-    .then(responseJson => displayMostListened(responseJson))
+    .then(displayMostListened(responseJson))
     .catch(err => {
       $('#js-error-message').text(`Something went wrong: ${err.message}`);
     });
