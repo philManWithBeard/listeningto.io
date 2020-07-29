@@ -22,7 +22,6 @@ const error = params.error
 const searchURL = 'https://api.spotify.com/v1/me/top/artists';
 
 if (accessToken) {
-  console.log("access token")
     getSpotifyTopSix()
 } else {
   // render initial screen
@@ -46,11 +45,9 @@ function getSpotifyTopSix() {
   const header = {
     'Authorization': 'Bearer ' + access_token
   }
-      console.log(url)
   fetch(url, header)
     .then(response => {
       if (response.ok) {
-        console.log(response)
         return response.json();
       }
       throw new Error(response.statusText);
