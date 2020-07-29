@@ -11,13 +11,13 @@ function getHashParams() {
   while ( e = r.exec(q)) {
      hashParams[e[1]] = decodeURIComponent(e[2]);
   }
-  console.log(hashParams)
   return hashParams;
 }
 
 const params = getHashParams()
 
 const accessToken = params.access_token
+console.log(accessToken)
 const error = params.error
 const searchURL = 'https://api.spotify.com/v1/me/top/artists';
 
@@ -43,7 +43,7 @@ function getSpotifyTopSix() {
   const queryString = formatQueryParams(params)
   const url = searchURL + '?' + queryString;
   const header = {
-    'Authorization': 'Bearer ' + access_token
+    'Authorization': 'Bearer ' + accessToken
   }
   fetch(url, header)
     .then(response => {
