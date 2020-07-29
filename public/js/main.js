@@ -35,7 +35,7 @@ function formatQueryParams(params) {
 
 function getSpotifyTopSix() {
   const params = {
-    time_range: short_term,
+    time_range: 'short_term',
     limit: 6
   };
   const queryString = formatQueryParams(params)
