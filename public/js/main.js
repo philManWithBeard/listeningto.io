@@ -1,75 +1,80 @@
-'use strict';
+'use strict'
+
+function getHashParams() {
+  const hashParams = {}
+  let e
+  const r = /([^&;=]+)=?([^&;]*)/g
+  const q = window.location.hash.substring(1)
+  while (e === r.exec(q)) {
+    hashParams[e[1]] = decodeURIComponent(e[2])
+  }
+  return hashParams
+}
+
+const params = getHashParams()
+
+const accessToken = params.access_token
+const error = params.error
+const searchURL = 'https://api.spotify.com/v1/me/top/artists';
 
 
-    /**
-     * Obtains parameters from the hash of the URL
-     * @return Object
-     */
-    function getHashParams() {
-      var hashParams = {};
-      var e, r = /([^&;=]+)=?([^&;]*)/g,
-        q = window.location.hash.substring(1);
-      while (e = r.exec(q)) {
-        hashParams[e[1]] = decodeURIComponent(e[2]);
+function formatQueryParams(params) {
+  const queryItems = Object.keys(params)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+  return queryItems.join('&');
+}
+
+function getSpotifyTopSix() {
+  const params = {
+    time_range: short_term,
+    limit: 6
+  };
+  const queryString = formatQueryParams(params)
+  const url = searchURL + '?' + queryString;
+  const header = {
+    'Authorization': 'Bearer ' + access_token
+  }
+
+  fetch(url, header)
+    .then(response => {
+      if (response.ok) {
+        console.log(response)
+        return response.json();
       }
-      return hashParams;
-    }
+      throw new Error(response.statusText);
+    })
+    .then(responseJson => console.log(JSON.stringify(responseJson)))
+    .catch(err => {
+      $('#js-error-message').text(`Something went wrong: ${err.message}`);
+    });
+}
 
-    var params = getHashParams();
-
-    var access_token = params.access_token,
-      refresh_token = params.refresh_token,
-      error = params.error;
-
-    if (error) {
-      alert('There was an error during the authentication');
-    } else {
-      if (access_token) {
-
-
-        $.ajax({
-          url: 'https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=6',
-          headers: {
-            'Authorization': 'Bearer ' + access_token
-          },
-          success: function(response) {
-            displayMostListened(response)
-            $('#login').hide();
-            $('#loggedin').show();
-          }
-        });
-      } else {
-        // render initial screen
-        $('#login').show();
-        $('#loggedin').hide();
-      }
-
-      function displayMostListened(result) {
-        console.log(result);
-        let albumArtwork = result.items.reduce((result, item, index) => {
-          result += `<div class="albumArtwork"> <img src="${item.images[1].url}"alt="">
+function displayMostListened(result) {
+  console.log(result)
+  let albumArtwork = result.items.reduce((result, item, index) => {
+    result += `<div class="albumArtwork"> <img src="${item.images[1].url}"alt="">
             <h4>${item.name}</h4>
-            </div>`;
-          return result;
-        }, '');;
-        let songsHtml = `<div class="songs">` + albumArtwork + `</div>`
-        renderMostListened(songsHtml)
-        $(".songs").html(albumArtwork);
-      }
+            </div>`
+    return result
+  }, '');
+  let songsHtml = `<div class="songs">` + albumArtwork + `</div>`
+  renderMostListened(songsHtml)
+  $(".songs").html(albumArtwork)
+}
 
-      function renderMostListened(html) {
-        const API_ID = "7dd8b6b9-cd53-474e-85ff-2cecfe88b7f0"
-        var settings = {
-          "url": "https://hcti.io/v1/image",
-          "method": "POST",
-          "timeout": 0,
-          "headers": {
-            "Authorization": "Basic N2RkOGI2YjktY2Q1My00NzRlLTg1ZmYtMmNlY2ZlODhiN2YwOmQwY2FjN2Y0LTIyZmEtNDM3ZC1iMzc1LTI3ZmQ3ZDZiZDAxYw==",
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          "data": {
-            "html": html,
-            "css": `
+function renderMostListened(html) {
+  const API_ID = "7dd8b6b9-cd53-474e-85ff-2cecfe88b7f0"
+  let settings = {
+    "url": "https://hcti.io/v1/image",
+    "method": "POST",
+    "timeout": 0,
+    "headers": {
+      "Authorization": "Basic N2RkOGI2YjktY2Q1My00NzRlLTg1ZmYtMmNlY2ZlODhiN2YwOmQwY2FjN2Y0LTIyZmEtNDM3ZC1iMzc1LTI3ZmQ3ZDZiZDAxYw==",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "data": {
+      "html": html,
+      "css": `
 
             .songs {
               display: flex;
@@ -131,14 +136,12 @@
             .playlists label:active {
               background-color: #dfd;
             }`,
-            "google_fonts": "Permanent Marker"
-          }
-        }
-        $.ajax(settings).done(function(response) {
-          console.log(response);
-          $(".songs").html(`<img id="artworkImg" src="${response.url}" width="500"/>`);
-          $(".download").html(`<a download="listeningto" href="${response.url}">Download and share</a>`);
-        });
-      }
-
+      "google_fonts": "Permanent Marker"
     }
+  }
+  $.ajax(settings).done(function(response) {
+    console.log(response)
+    $(".songs").html(`<img id="artworkImg" src="${response.url}" width="500"/>`)
+    $(".download").html(`<a download="listeningto" href="${response.url}">Download and share</a>`)
+  })
+}
