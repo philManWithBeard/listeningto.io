@@ -81,6 +81,73 @@ function displayMostListened(result) {
 }
 
 function renderMostListened(html) {
+  let urlEncoded = new URLSearchParams();
+  urlEncoded.append("html", html);
+  urlEncoded.append("css", `
+
+        .songs {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          width: 500px;
+        }
+
+        .albumArtwork {
+          width: 150px;
+          height: 200px;
+          border-style: solid;
+          border-width: thin;
+          margin: 10px;
+          padding: 10px;
+          font-family: 'Permanent Marker', cursive;
+        }
+
+        .albumArtwork img {
+          float: left;
+          background-size: cover;
+          width: 150px;
+          height: 150px;
+        }
+
+        .albumArtwork h4 {
+          height: 70px;
+          margin: auto;
+          text-align: center;
+        }
+
+        .playlists label {
+          display: block;
+          border-style: solid;
+          border-width: thin;
+          margin: 10px 0px;
+          padding: 10px;
+        }
+
+        .playlists input[type="radio"] {
+          opacity: 0;
+          position: fixed;
+          width: 0;
+        }
+
+        .playlists input[type="radio"]:checked+label {
+          background-color: #bfb;
+        }
+
+        .playlists input[type="radio"]:focus+label {
+          background-color: #dfd;
+        }
+
+        .playlists label:hover, #quizForm label:checked {
+          background-color: #dfd;
+        }
+
+        .playlists label:active {
+          background-color: #dfd;
+        }`)
+  urlEncoded.append("google_fonts", "Permanent Marker")
+
+
   const imgRequestOptions = {
     method: 'POST',
     timeout: 0,
@@ -88,72 +155,8 @@ function renderMostListened(html) {
       "Authorization": "Basic N2RkOGI2YjktY2Q1My00NzRlLTg1ZmYtMmNlY2ZlODhiN2YwOmQwY2FjN2Y0LTIyZmEtNDM3ZC1iMzc1LTI3ZmQ3ZDZiZDAxYw==",
       "Content-Type": "application/x-www-form-urlencoded"
     },
-    body: {
-      "html": html,
-      "css": `
-
-            .songs {
-              display: flex;
-              flex-direction: row;
-              flex-wrap: wrap;
-              justify-content: center;
-              width: 500px;
-            }
-
-            .albumArtwork {
-              width: 150px;
-              height: 200px;
-              border-style: solid;
-              border-width: thin;
-              margin: 10px;
-              padding: 10px;
-              font-family: 'Permanent Marker', cursive;
-            }
-
-            .albumArtwork img {
-              float: left;
-              background-size: cover;
-              width: 150px;
-              height: 150px;
-            }
-
-            .albumArtwork h4 {
-              height: 70px;
-              margin: auto;
-              text-align: center;
-            }
-
-            .playlists label {
-              display: block;
-              border-style: solid;
-              border-width: thin;
-              margin: 10px 0px;
-              padding: 10px;
-            }
-
-            .playlists input[type="radio"] {
-              opacity: 0;
-              position: fixed;
-              width: 0;
-            }
-
-            .playlists input[type="radio"]:checked+label {
-              background-color: #bfb;
-            }
-
-            .playlists input[type="radio"]:focus+label {
-              background-color: #dfd;
-            }
-
-            .playlists label:hover, #quizForm label:checked {
-              background-color: #dfd;
-            }
-
-            .playlists label:active {
-              background-color: #dfd;
-            }`,
-      "google_fonts": "Permanent Marker"
-    }
+    body: urlEncoded,
+    redirect: 'follow'
   }
 
   fetch(imgURL, imgRequestOptions)
