@@ -81,15 +81,6 @@ function displayMostListened(result) {
 }
 
 function renderMostListened(html) {
-  const params = {
-    time_range: 'short_term',
-    limit: 6
-  };
-  const queryString = formatQueryParams(params)
-  const url = searchURL + '?' + queryString;
-  const header = {
-    'Authorization': 'Bearer ' + accessToken
-  }
   const imgRequestOptions = {
     method: 'POST',
     timeout: 0,
