@@ -59,7 +59,8 @@ function getSpotifyTopSix() {
 }
 
   function displayMostListened(result) {
-    console.log(result)
+    $('#login').hide()
+    $('#loggedin').show()
     let albumArtwork = result.items.reduce((result, item, index) => {
       result += `<div class="albumArtwork"> <img src="${item.images[1].url}"alt="">
             <h4>${item.name}</h4>
