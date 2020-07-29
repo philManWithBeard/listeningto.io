@@ -13,9 +13,10 @@ function getHashParams() {
   while (e === r.exec(q)) {
     hashParams[e[1]] = decodeURIComponent(e[2])
   }
+  console.log(hashParams)
   return hashParams
 }
-console.log(getHashParams())
+
 const params = getHashParams()
 
 const accessToken = params.access_token
