@@ -17,7 +17,6 @@ function getHashParams() {
 const params = getHashParams()
 
 const accessToken = params.access_token
-console.log(accessToken)
 const error = params.error
 const searchURL = 'https://api.spotify.com/v1/me/top/artists';
 
@@ -59,7 +58,7 @@ function getSpotifyTopSix() {
       }
       throw new Error(response.statusText);
     })
-    .then(responseJson => console.log(JSON.stringify(responseJson)))
+    .then(responseJson => displayMostListened(JSON.stringify(responseJson)))
     .catch(err => {
       $('#js-error-message').text(`Something went wrong: ${err.message}`);
     });
@@ -157,7 +156,6 @@ function getSpotifyTopSix() {
       }
     }
     $.ajax(settings).done(function(response) {
-      console.log(response)
       $(".songs").html(`<img id="artworkImg" src="${response.url}" width="500"/>`)
       $(".download").html(`<a download="listeningto" href="${response.url}">Download and share</a>`)
     })
