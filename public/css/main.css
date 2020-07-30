@@ -26,6 +26,14 @@ header h1 {
   margin: 0px;
 }
 
+.artworkImg {
+  display: block;
+  max-width:500px;
+  max-height:1500px;
+  width: auto;
+  height: auto;
+}
+
 .download, #login {
   text-align: center;
 }
