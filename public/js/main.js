@@ -172,6 +172,13 @@ function renderMostListened(html) {
     });
 }
 
+if (navigator.share) {
+  console.log("web share is here")
+} else {
+  console.log("web share is not here")
+}
+
+
 function displayImage(imgResponse) {
   $(".songs").html(`<img id="artworkImg" src="${imgResponse.url}" width="500"/>`)
   $(".download").html(`<a download="listeningto" href="${imgResponse.url}">Download and share</a>`)
