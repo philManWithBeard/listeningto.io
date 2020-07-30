@@ -183,14 +183,9 @@ function sharingType() {
 }
 
 function watchForm() {
-  $("#target").submit(function(event) {
+  $(".download").click(function(event) {
     event.preventDefault()
-    let selectedState
-    $('#locality-dropdown option:selected').each(function(i) {
-      selectedState += ',' + $(this).val();
-    });
-    let selectedResultNo = $('#number-of-results option:selected').val()
-    formQuery(selectedState, selectedResultNo)
+    alert("whaaaaaa")
   });
 }
 
