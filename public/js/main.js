@@ -66,7 +66,7 @@ function getSpotifyTopSix() {
     });
 }
 
-let songsHtml = ""
+let songsHtml = ''
 
 function displayMostListened(result) {
   $('#login').hide()
@@ -81,6 +81,8 @@ function displayMostListened(result) {
   $(".songs").html(albumArtwork)
   $(".download").html(`<a href="./">Download and share</a>`)
 }
+
+console.log(songsHtml)
 
 function renderMostListened(html) {
   let urlEncoded = new URLSearchParams();
