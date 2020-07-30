@@ -178,12 +178,16 @@ function renderMostListened(html) {
 
 function watchForm(songsHtml) {
   let imgLink = renderMostListened(songsHtml)
+  var file = new File([imgLink], "picture.jpg", {type: 'image/jpeg'});
+    var filesArray = [file];
+
   $(".download").click(function(event) {
     event.preventDefault()
+
     if (navigator.canShare && navigator.canShare({
         files: filesArray
       })) {
-      navigator.share({
+          navigator.share({
           files: filesArray,
           title: 'Pictures',
           text: 'Our Pictures.',
