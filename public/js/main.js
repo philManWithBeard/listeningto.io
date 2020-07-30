@@ -168,7 +168,7 @@ function renderMostListened(html) {
       throw new Error(response.statusText);
     })
     .then(imgResponse => {
-      return imgResponse.url
+      console.log(imgResponse.url)
     })
     .catch(err => {
       $('#js-error-message').text(`Something went wrong: ${err.message}`);
@@ -178,7 +178,6 @@ function renderMostListened(html) {
 
 function watchForm(songsHtml) {
   let imgLink = renderMostListened(songsHtml)
-  console.log(songsHtml)
   $(".download").click(function(event) {
     event.preventDefault()
     if (navigator.canShare && navigator.canShare({
