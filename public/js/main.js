@@ -168,24 +168,31 @@ function renderMostListened(html) {
       }
       throw new Error(response.statusText);
     })
-    .then(imgResponse => displayImage(imgResponse))
+    .then(imgResponse => return(imgResponse.url))
     .catch(err => {
       $('#js-error-message').text(`Something went wrong: ${err.message}`);
     });
 }
 
-function sharingType() {
-  if (navigator.share) {
-    console.log("web share is here")
-  } else {
-    console.log("web share is not here")
-  }
-}
 
 function watchForm() {
+  let imgLink = renderMostListened(songsHtml)
+  console.log(imgLink)
   $(".download").click(function(event) {
     event.preventDefault()
-    alert("whaaaaaa")
+    if (navigator.canShare && navigator.canShare({
+        files: filesArray
+      })) {
+      navigator.share({
+          files: filesArray,
+          title: 'Pictures',
+          text: 'Our Pictures.',
+        })
+        .then(() => console.log('Share was successful.'))
+        .catch((error) => console.log('Sharing failed', error));
+    } else {
+      console.log(`Your system doesn't support sharing files.`);
+    }
   });
 }
 
