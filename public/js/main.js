@@ -193,3 +193,5 @@ function displayImage(imgResponse) {
   $(".songs").html(`<img id="artworkImg" src="${imgResponse.url}" width="500"/>`)
   $(".download").html(`<a download="listeningto" href="${imgResponse.url}">Download and share</a>`)
 }
+
+watchForm();
