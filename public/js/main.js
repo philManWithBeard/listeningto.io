@@ -178,6 +178,7 @@ function renderMostListened(html) {
 
 
 function watchForm() {
+  console.log(songsHtml)
   let imgLink = renderMostListened(songsHtml)
   console.log(imgLink)
   $(".download").click(function(event) {
