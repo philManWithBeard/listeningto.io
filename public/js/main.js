@@ -66,8 +66,6 @@ function getSpotifyTopSix() {
     });
 }
 
-let songsHtml = ''
-
 function displayMostListened(result) {
   $('#login').hide()
   $('#loggedin').show()
@@ -77,12 +75,11 @@ function displayMostListened(result) {
             </div>`
     return result
   }, '');
-  songsHtml = `<div class="songs">` + albumArtwork + `</div>`
+  let songsHtml = `<div class="songs">` + albumArtwork + `</div>`
   $(".songs").html(albumArtwork)
   $(".download").html(`<a href="./">Download and share</a>`)
+  watchForm(songsHtml)
 }
-
-console.log(songsHtml)
 
 function renderMostListened(html) {
   let urlEncoded = new URLSearchParams();
@@ -179,8 +176,7 @@ function renderMostListened(html) {
 }
 
 
-function watchForm() {
-  console.log(songsHtml)
+function watchForm(songsHtml) {
   let imgLink = renderMostListened(songsHtml)
   console.log(imgLink)
   $(".download").click(function(event) {
@@ -205,5 +201,3 @@ function displayImage(imgResponse) {
   $(".songs").html(`<img id="artworkImg" src="${imgResponse.url}" width="500"/>`)
   $(".download").html(`<a download="listeningto" href="${imgResponse.url}">Download and share</a>`)
 }
-
-watchForm();
