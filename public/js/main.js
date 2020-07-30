@@ -79,6 +79,7 @@ function displayMostListened(result) {
   }, '');
   songsHtml = `<div class="songs">` + albumArtwork + `</div>`
   $(".songs").html(albumArtwork)
+  $(".download").html(`<a href="./">Download and share</a>`)
 }
 
 function renderMostListened(html) {
@@ -173,12 +174,25 @@ function renderMostListened(html) {
     });
 }
 
-if (navigator.share) {
-  console.log("web share is here")
-} else {
-  console.log("web share is not here")
+function sharingType() {
+  if (navigator.share) {
+    console.log("web share is here")
+  } else {
+    console.log("web share is not here")
+  }
 }
 
+function watchForm() {
+  $("#target").submit(function(event) {
+    event.preventDefault()
+    let selectedState
+    $('#locality-dropdown option:selected').each(function(i) {
+      selectedState += ',' + $(this).val();
+    });
+    let selectedResultNo = $('#number-of-results option:selected').val()
+    formQuery(selectedState, selectedResultNo)
+  });
+}
 
 function displayImage(imgResponse) {
   $(".songs").html(`<img id="artworkImg" src="${imgResponse.url}" width="500"/>`)
