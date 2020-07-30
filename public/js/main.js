@@ -168,7 +168,9 @@ function renderMostListened(html) {
       }
       throw new Error(response.statusText);
     })
-    .then(imgResponse => return imgResponse.url)
+    .then(imgResponse => {
+      return imgResponse.url
+    })
     .catch(err => {
       $('#js-error-message').text(`Something went wrong: ${err.message}`);
     });
