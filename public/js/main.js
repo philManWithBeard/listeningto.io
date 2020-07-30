@@ -178,7 +178,7 @@ function renderMostListened(html) {
 
 function watchForm(songsHtml) {
   let imgLink = renderMostListened(songsHtml)
-  console.log(imgLink)
+  console.log(songsHtml)
   $(".download").click(function(event) {
     event.preventDefault()
     if (navigator.canShare && navigator.canShare({
