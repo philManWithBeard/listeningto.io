@@ -177,29 +177,14 @@ function renderMostListened(html) {
 
 
 function watchForm(songsHtml) {
-  let imgLink = renderMostListened(songsHtml) + ".jpg"
-  var file = new File([imgLink], "picture.jpg", {
-    type: 'image/jpeg'
-  });
-  var filesArray = [file];
-
   $(".download").click(function(event) {
     event.preventDefault()
+    let imgLink = renderMostListened(songsHtml) + ".jpg"
+    var file = new File([imgLink], "picture.jpg", {
+      type: 'image/jpeg'
+    });
+    displayImage(imgLink)
 
-    if (navigator.canShare && navigator.canShare({
-        files: filesArray
-      })) {
-      navigator.share({
-          files: filesArray,
-          title: 'Pictures',
-          text: 'Our Pictures.',
-        })
-        .then(() => console.log('Share was successful.'))
-        .catch((error) => console.log('Sharing failed', error));
-    } else {
-      console.log(`Your system doesn't support sharing files.`);
-    }
-  });
 }
 
 function displayImage(imgResponse) {
