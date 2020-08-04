@@ -168,7 +168,7 @@ function renderMostListened(html) {
       throw new Error(response.statusText);
     })
     .then(imgResponse => {
-      console.log(imgResponse.url)
+      displayImage(imgResponse.url)
       return imgResponse.url
     })
     .catch(err => {
@@ -180,8 +180,7 @@ function renderMostListened(html) {
 function watchForm(songsHtml) {
   $(".download").click(function(event) {
       event.preventDefault()
-      let imgLink = renderMostListened(songsHtml)
-      console.log(songsHtml)
+      renderMostListened(songsHtml)
     })
   }
 
