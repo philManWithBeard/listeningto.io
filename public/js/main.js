@@ -180,6 +180,7 @@ function renderMostListened(html) {
 function watchForm(songsHtml) {
   $(".download").click(function(event) {
       event.preventDefault()
+      alert("hello")
       renderMostListened(songsHtml)
     })
   }
