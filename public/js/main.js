@@ -177,6 +177,7 @@ function renderMostListened(html) {
     })
     .then(imgResponse => {
       console.log(imgResponse.url)
+      displayImage(imgResponse.url)
     })
     .catch(err => {
       $('#js-error-message').text(`Something went wrong: ${err.message}`);
@@ -184,6 +185,6 @@ function renderMostListened(html) {
 }
 
   function displayImage(imgResponse) {
-    $(".songs").html(`<p>Right click the image to save and share.</p><img id="artworkImg" src="${imgResponse.url}" width="500"/>`)
-    $(".download").html(`<a download="listeningto" href="${imgResponse.url}">Download and share</a>`)
+    $(".songs").html(`<p>Right click the image to save and share.</p><img id="artworkImg" src="${imgResponse}" width="500"/>`)
+    $(".download").html(`<a download="listeningto" href="${imgResponse}">Download and share</a>`)
   }
