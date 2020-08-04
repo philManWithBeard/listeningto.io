@@ -168,6 +168,7 @@ function renderMostListened(html) {
       throw new Error(response.statusText);
     })
     .then(imgResponse => {
+      console.log(imgResponse.url)
       return imgResponse.url
     })
     .catch(err => {
