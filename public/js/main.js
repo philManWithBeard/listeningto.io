@@ -81,6 +81,14 @@ function displayMostListened(result) {
   watchForm(songsHtml)
 }
 
+function watchForm(songsHtml) {
+  $(".download").click(function(event) {
+      event.preventDefault()
+      renderMostListened(songsHtml)
+    })
+  }
+
+
 function renderMostListened(html) {
   let urlEncoded = new URLSearchParams();
   urlEncoded.append("html", html);
@@ -168,22 +176,13 @@ function renderMostListened(html) {
       throw new Error(response.statusText);
     })
     .then(imgResponse => {
+      console.log(imgResponse.url)
       displayImage(imgResponse.url)
-      return imgResponse.url
     })
     .catch(err => {
       $('#js-error-message').text(`Something went wrong: ${err.message}`);
     });
 }
-
-
-function watchForm(songsHtml) {
-  $(".download").click(function(event) {
-      event.preventDefault()
-      alert("hello")
-      renderMostListened(songsHtml)
-    })
-  }
 
   function displayImage(imgResponse) {
     $(".songs").html(`<p>Right click the image to save and share.</p><img id="artworkImg" src="${imgResponse.url}" width="500"/>`)
