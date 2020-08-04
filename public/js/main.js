@@ -186,5 +186,5 @@ function renderMostListened(html) {
 
   function displayImage(imgResponse) {
     $(".songs").html(`<p>Right click the image to save and share.</p><img id="artworkImg" src="${imgResponse}" width="500"/>`)
-    $(".download").hide
+      $(".download").html(``)
   }
