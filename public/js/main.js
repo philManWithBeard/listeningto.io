@@ -178,16 +178,16 @@ function renderMostListened(html) {
 
 function watchForm(songsHtml) {
   $(".download").click(function(event) {
-    event.preventDefault()
-    let imgLink = renderMostListened(songsHtml) + ".jpg"
-    var file = new File([imgLink], "picture.jpg", {
-      type: 'image/jpeg'
-    });
-    displayImage(imgLink)
+      event.preventDefault()
+      let imgLink = renderMostListened(songsHtml) + ".jpg"
+      var file = new File([imgLink], "picture.jpg", {
+        type: 'image/jpeg'
+      });
+      displayImage(imgLink)
+    }
+  }
 
-}
-
-function displayImage(imgResponse) {
-  $(".songs").html(`<img id="artworkImg" src="${imgResponse.url}" width="500"/>`)
-  $(".download").html(`<a download="listeningto" href="${imgResponse.url}">Download and share</a>`)
-}
+  function displayImage(imgResponse) {
+    $(".songs").html(`<p>Right click the image to save and share.</p><img id="artworkImg" src="${imgResponse.url}" width="500"/>`)
+    $(".download").html(`<a download="listeningto" href="${imgResponse.url}">Download and share</a>`)
+  }
