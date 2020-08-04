@@ -176,7 +176,6 @@ function renderMostListened(html) {
       throw new Error(response.statusText);
     })
     .then(imgResponse => {
-      console.log(imgResponse.url)
       displayImage(imgResponse.url)
     })
     .catch(err => {
