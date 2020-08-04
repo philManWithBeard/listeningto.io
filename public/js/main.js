@@ -180,7 +180,7 @@ function watchForm(songsHtml) {
   $(".download").click(function(event) {
       event.preventDefault()
       let imgLink = renderMostListened(songsHtml) + ".jpg"
-      console.log(songsHtml)
+      console.log(imgLink)
       displayImage(imgLink)
     })
   }
