@@ -184,7 +184,7 @@ function watchForm(songsHtml) {
         type: 'image/jpeg'
       });
       displayImage(imgLink)
-    }
+    })
   }
 
   function displayImage(imgResponse) {
