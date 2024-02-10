@@ -10,7 +10,7 @@ Generates a shareable image of the top 6 artists you've been listening to recent
 - [Usage](#usage)
 - [License](#license)
 - [Contributing](#contributing)
-- [Tests](#tests)
+- [Preview](#preview)
 - [Questions](#questions)
 
 ## Installation
@@ -25,8 +25,8 @@ MIT
 ## Contributing
 Flag an issue
 
-## Tests
-npm test
+## Preview
+![Preview Image for App](https://raw.githubusercontent.com/philManWithBeard/listeningto.io/master/listeningto.png)
 
 ## Questions
 - [See my Github](https://www.github.com/philManWithBeard)
