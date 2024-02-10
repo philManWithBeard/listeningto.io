@@ -19,6 +19,12 @@ npm i
 ## Usage
 node app.js
 
+## Technologies Used
+
+- ExpressJS
+- VanillaJS
+
+
 ## License
 MIT
 
